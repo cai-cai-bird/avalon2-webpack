@@ -36,6 +36,7 @@
 
 *在/app/_js/ 下的模块目录 和 _views/_scss 模块目录 保持一致。*
 
+
     --- ./app
         |--- ./_components (组件目录)
         |--- ./_fonts(字体库)
@@ -64,6 +65,7 @@
                   |--- order.html
 
 ## 最终的webpack配置如下 ##
+```javascript
 
     var path = require('path');
     var glob = require('glob');
