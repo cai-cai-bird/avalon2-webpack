@@ -1,4 +1,7 @@
-require('../../_scss/base.scss')
+import baseCss from '../../_scss/base.scss';
+import productBox from '../../_components/productBox.js';
 
+// var productBox = require('../../_components/productBox.js');
+console.log(productBox)
 
-$("<div>这是jquery生成的</div>").appendTo("#product-index");
+$(productBox()).appendTo("#product-index");
