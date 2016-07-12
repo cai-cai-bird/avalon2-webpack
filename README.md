@@ -36,7 +36,7 @@
 
 *在/app/_js/ 下的模块目录 和 _views/_scss 模块目录 保持一致。*
 
-
+```
     --- ./app
         |--- ./_components (组件目录)
         |--- ./_fonts(字体库)
@@ -63,6 +63,7 @@
               |--- ./product [业务模块]
                   |--- index.html
                   |--- order.html
+```
 
 ## 最终的webpack配置如下 ##
 ```javascript
@@ -219,5 +220,5 @@
         }
         return entries;
     }
-
+```
 
