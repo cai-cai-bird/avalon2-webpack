@@ -1,7 +1,8 @@
 require('../../_scss/base.scss')
+// var avalon=require('avalon2');
 avalon.define({
     $id: "avalonCtrl",
-    name: "Hello Avalon!"
+    name: "Hello Avalon! - search"
 });
 
 

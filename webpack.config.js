@@ -80,7 +80,7 @@ config = {
         }),
         new webpack.ProvidePlugin({ //加载jq
             $: 'jquery',
-            avalon:'avalon2'
+            'window.avalon':'avalon2'
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common', // 将公共模块提取，生成名为`vendors`的chunk
