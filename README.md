@@ -50,7 +50,7 @@
               |--- order.html
 ```
 
-### 开发要求/原则
-相关链接:<http://webpack.github.io/>
-<https://github.com/RubyLouvre/avalon2/>
-<http://avalonjs.coding.me//>
+### 相关链接
+[webpack: <http://webpack.github.io/>]
+
+[avalon2: <http://avalonjs.coding.me//>]
