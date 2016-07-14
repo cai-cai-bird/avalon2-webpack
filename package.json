@@ -3,9 +3,18 @@
   "version": "1.0.0",
   "description": "webpack-avalon2-seed",
   "main": "index.js",
+  "config": {
+    "buildDir": "./dist",
+    "buildDirTests": "./dist_tests",
+    "devHost": "localhost",
+    "devPort": 3000
+  },
   "scripts": {
-    "build": "webpack",
-    "dev": "webpack-dev-server --devtool eval --progress --colors --content-base build"
+    "start": "NODE_ENV=development node dev-server ./webpack.config",
+    "build": "NODE_ENV=test webpack",
+    "buildp": "webpack",
+    "dev": "NODE_ENV=development webpack-dev-server --hot --inline --devtool eval --progress --colors --content-base dist_tests"
+
   },
   "repository": {
     "type": "git",
@@ -25,8 +34,10 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "glob": "^7.0.5",
+    "html-loader": "^0.4.3",
     "html-webpack-plugin": "^2.22.0",
     "node-sass": "^3.8.0",
+    "opn": "^4.0.2",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",

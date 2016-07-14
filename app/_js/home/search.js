@@ -1,4 +1,4 @@
-require('../../_scss/base.scss')
+require('../../_lib/base.scss')
 // var avalon=require('avalon2');
 avalon.define({
     $id: "avalonCtrl",
