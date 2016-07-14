@@ -51,6 +51,7 @@
 ```
 
 ### 相关链接
-[webpack: <http://webpack.github.io/>]
 
-[avalon2: <http://avalonjs.coding.me//>]
+[webpack: <http://webpack.github.io>]
+
+[avalon2: <http://avalonjs.coding.me>]
