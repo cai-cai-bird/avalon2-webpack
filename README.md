@@ -2,11 +2,11 @@
 
 
 
-## 安装依赖 ##
+### 安装依赖
 
 `$ npm install` - 安装依赖
 
-#### npm scripts
+### npm scripts
 
 `$ npm run start` - 建立开发模式并启动应用程序在 http://localhost:3000
 
@@ -19,38 +19,38 @@
 
 ### 开发要求/原则
 
-*在/app/_js/ 下的模块目录 和 _views/_scss 模块目录 保持一致。*
+**_js,_views,_scss 目录结构文件名保持一致**
 
 ```
-    --- ./app
-        |--- ./_components (组件目录)
-        |--- ./_fonts(字体库)
-        |--- ./_images(图片)
-        |--- ./_lib(外部库文件)
-                  |--- jQuery-3.0.0.js
-        |--- ./_scss
-                  |--- base.scss
-                  |--- variables.scss {scss 全局的变量定义 引入到base.scss}
+--- ./app
+    |--- ./_components (组件目录)
+    |--- ./_fonts(字体库)
+    |--- ./_images(图片)
+    |--- ./_lib(外部库文件)
+              |--- jQuery-3.0.0.js
+    |--- ./_scss
+              |--- base.scss
+              |--- variables.scss {scss 全局的变量定义 引入到base.scss}
 
-                  |---./home [这是一个业务模块]
-                        |--- index.scss
-        |--- ./_js
-             |--- ./home [业务模块]
-                  |--- index.js
-                  |--- search.js
-             |--- ./product [业务模块]
-                  |--- index.js
-                  |--- order.js
-        |--- ./_views
-              |--- ./home [业务模块]
-                  |--- index.html
-                  |--- search.html
-              |--- ./product [业务模块]
-                  |--- index.html
-                  |--- order.html
+              |---./home [这是一个业务模块]
+                    |--- index.scss
+    |--- ./_js
+         |--- ./home [业务模块]
+              |--- index.js
+              |--- search.js
+         |--- ./product [业务模块]
+              |--- index.js
+              |--- order.js
+    |--- ./_views
+          |--- ./home [业务模块]
+              |--- index.html
+              |--- search.html
+          |--- ./product [业务模块]
+              |--- index.html
+              |--- order.html
 ```
 
-#### 开发要求/原则
+### 开发要求/原则
 相关链接:<http://webpack.github.io/>
 <https://github.com/RubyLouvre/avalon2/>
 <http://avalonjs.coding.me//>
