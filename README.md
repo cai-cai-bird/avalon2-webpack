@@ -10,9 +10,9 @@
 
 `$ npm run start` - 建立开发模式并启动应用程序在 http://localhost:3000
 
-`$ npm run build` - 生成一个静态的未压缩的环境包,可以查看调试
+`$ npm run build` - 生成一个静态的未压缩的环境包,可以查看调试 ./dist_tests 目录下
 
-`$ npm run buildp` - 建立开发模式并启动应用程序在 http://localhost:3000
+`$ npm run buildp` - 打包理想的生产环境 ./dist 目录下
 
 `$ npm run dev` - 命令行启动热服务
 
