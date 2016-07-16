@@ -7,7 +7,7 @@ var pkg = require('./package.json');
 var port = pkg.config.devPort;
 var host = pkg.config.devHost;
 
-var configPath = process.argv[2] || './webpack.config';
+var configPath = './webpack-dev.config';
 var config = require(configPath);
 
 //如果使用这种模式启动 服务 webpack.devServer, 只是一个配置目录并不依赖
