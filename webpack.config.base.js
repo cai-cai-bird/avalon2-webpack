@@ -15,9 +15,6 @@ var node_modules = path.resolve(__dirname, 'node_modules');
 var webpackHot='webpack/hot/dev-server';
 var webpackClient='webpack-dev-server/client?http://'+pkg.config.devHost+':'+pkg.config.devPort;
 
-
-
-
 /**
  * 获得路径
  * @param globPath: str
@@ -52,21 +49,20 @@ module.exports=function (options) {
     //生成路径字符串
     var jsBundle = path.join('_js', util.format('[name].%s.js', pkg.version));
     var cssBundle = path.join('_css', util.format('[name].%s.css', pkg.version));
-
-        var _path = pkg.config.buildDir;
+    var _path = pkg.config.buildDir;
 
     // 获取js
         var entries = getEntry('app/_js/**/*.js', 'app/_js/');
     //用entries 获取 html 多模块入口文件
         var pages = Object.keys(entries);
 
-        if(DEBUG){
-
-            pages.forEach(function (e) {
-                entries[e].unshift(webpackClient,webpackHot)
-            });
-
-        }
+    //#如果需要 ie8~9 下调试注释这里 ie8~9 不支持热调试
+    if(DEBUG){
+        pages.forEach(function (e) {
+            entries[e].unshift(webpackClient,webpackHot)
+        });
+    }
+    //#end
 
    //config
     var config = {
@@ -77,7 +73,7 @@ module.exports=function (options) {
         resolve: {
             extensions: ['', '.js', '.json'],
             alias: {
-                'jquery': path.resolve(__dirname, 'app/_lib/jQuery-1.9.1.js'),
+                'jquery': path.resolve(__dirname, 'app/_lib/jQuery-1.11.3.js'),
                 'avalon2':path.resolve(node_modules,'avalon2/dist/avalon.js')
             }
         },
@@ -89,14 +85,14 @@ module.exports=function (options) {
         },
         module: {
             loaders: [
-                // 如果你需要 使用es6
-                // {   test: /\.js$/,
-                //     exclude: /node_modules/, //排除文件夹
-                //     loader: 'babel', //解析 es6
-                //     query:{
-                //         presets:['es2015']
-                //     }
-                // },
+                /*如果你需要 使用es6
+                {   test: /\.js$/,
+                    exclude: /node_modules/, //排除文件夹
+                    loader: 'babel', //解析 es6
+                    query:{
+                        presets:['es2015']
+                    }
+                },*/
                 {
                     test: /\.css$/,
                     loader: ExtractTextPlugin.extract('style', 'css')
@@ -120,10 +116,11 @@ module.exports=function (options) {
             new ExtractTextPlugin(cssBundle, {
                 allChunks: true
             }),
-            // new webpack.ProvidePlugin({
-            //     $: 'jquery' //加载$全局
-            //     // 'window.avalon':'avalon2' //加载 avalon 全局 [******这里必须强制 window.avalon]
-            // }),
+            new webpack.ProvidePlugin({
+                $: 'jquery', //加载$全局
+                jQuery: 'jquery' //加载$全局
+                // avalon:'avalon2' //加载 avalon 全局 [******这里必须强制 window.avalon]
+            }),
             new webpack.optimize.CommonsChunkPlugin({
                 name: 'common',     // 将公共模块提取，生成名为`common`的chunk
                 chunks: pages,      //提取哪些模块共有的部分

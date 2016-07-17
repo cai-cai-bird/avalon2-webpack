@@ -4,14 +4,9 @@ var webpack= require('webpack');
 
 var webpack_config = require('./webpack.config.base')
 // console.log(webpack_config({debug:true}))
-console.log( merge(webpack_config({debug:true}), {
-    devtool : "source-map",
-    plugins: [
-        new webpack.HotModuleReplacementPlugin()
-    ]
-}));
 module.exports = merge(webpack_config({debug:true}), {
     devtool : "source-map",
+    //#如果需要 ie8~9 下调试注释这里 ie8~9 不支持热调试
     plugins: [
         new webpack.HotModuleReplacementPlugin()
     ]
