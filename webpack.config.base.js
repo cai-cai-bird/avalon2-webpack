@@ -77,7 +77,7 @@ module.exports=function (options) {
         resolve: {
             extensions: ['', '.js', '.json'],
             alias: {
-                'jquery': path.resolve(__dirname, 'app/_lib/jQuery-3.0.0.js'),
+                'jquery': path.resolve(__dirname, 'app/_lib/jQuery-1.9.1.js'),
                 'avalon2':path.resolve(node_modules,'avalon2/dist/avalon.js')
             }
         },
@@ -117,14 +117,13 @@ module.exports=function (options) {
             ]
         },
         plugins: [
-            new webpack.HotModuleReplacementPlugin(),
             new ExtractTextPlugin(cssBundle, {
                 allChunks: true
             }),
-            new webpack.ProvidePlugin({
-                $: 'jquery' //加载$全局
-                // 'window.avalon':'avalon2' //加载 avalon 全局 [******这里必须强制 window.avalon]
-            }),
+            // new webpack.ProvidePlugin({
+            //     $: 'jquery' //加载$全局
+            //     // 'window.avalon':'avalon2' //加载 avalon 全局 [******这里必须强制 window.avalon]
+            // }),
             new webpack.optimize.CommonsChunkPlugin({
                 name: 'common',     // 将公共模块提取，生成名为`common`的chunk
                 chunks: pages,      //提取哪些模块共有的部分

@@ -9,8 +9,8 @@
     "devPort": 3000
   },
   "scripts": {
-    "dev": "node dev-server ./webpack-dev.config",
-    "build": "webpack",
+    "dev": "node dev-server ./dev.config",
+    "build": "webpack --config ./pro.config",
     "start": "NODE_ENV=development webpack-dev-server --hot --inline --devtool eval --progress --colors --content-base dist_tests"
   },
   "repository": {

@@ -1,4 +1,5 @@
-function getAge() {
-    return '<div class="productBox">Components!</div>';
-}
-export default getAge;
+var getAge= function () {
+    return '<div class="productBox">Components! 111</div>';
+};
+
+module.exports=getAge
