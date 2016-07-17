@@ -59,7 +59,7 @@
     请在注释到dev.config.js 和 webpack.config.base.js 下 热更新插件的代码
 
 
-3.webpack 支持的jQuery 从1.11.0 开始
+3.  webpack 支持的jQuery 从1.11.0 开始
     之前的版本会挂在 window下
     而并非是
 
