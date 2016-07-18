@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>avalon demo</title>
+</head>
+<body>
+    <div class="tit">
+        <h2>controller绑定</h2>
+    </div>
+    <div class="fix">
+        <div class="ms-controller" ms-controller="AAA">
+            <div>{{@name}} : {{@color}}</div>
+            <div ms-controller="BBB">
+                <div>{{@name}} : {{@color}}</div>
+                <div ms-controller="CCC">
+                    <div>{{@name}} : {{@color}}</div>
+                </div>
+                <div ms-important="DDD">
+                    <div>{{@name}} : {{@color}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tit">
+        <h2>important绑定</h2>
+    </div>
+    <div class="fix">
+        <div ms-important='aaa'>
+            <div>{{@name}} : {{@color}}</div>
+            <div ms-controller='bbb'>
+                <div>{{@name}} : {{@color}}</div>
+                <div ms-important='ccc'>
+                    <div>{{@name}} : {{@color}}</div>
+                </div>
+            </div>
+            <div ms-controller='ddd'>
+                <div>{{@name}} : {{@color}}</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
