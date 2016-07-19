@@ -11,6 +11,7 @@
   "scripts": {
     "dev": "node dev-server ./dev.config",
     "build": "webpack --config ./pro.config",
+    "bie": "webpack ---watch --config ./pro.config ",
     "bug": "webpack-dev-server --config ./dev.config --hot --inline --devtool eval --progress --colors --content-base dist"
   },
   "repository": {

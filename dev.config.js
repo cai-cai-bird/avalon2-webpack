@@ -10,4 +10,4 @@ module.exports = merge(webpack_config({debug:true}), {
     plugins: [
         new webpack.HotModuleReplacementPlugin()
     ]
-})
+});

@@ -1,4 +1,6 @@
+require('../_lib/base.scss')
 require("../_scss/avalon2-demo.scss");
+
 /*ms-controller*/
 avalon.define({
     $id: "AAA",
@@ -48,33 +50,42 @@ avalon.define({
 var at=avalon.define({
     $id:'attr',
     toggle:true,
-    width:"1px",
-    array:[]
+    dataWidth:"true",
+    dataHeight:"3px",
+    array:[],
+    obj:{
+        title: 'title',
+        algin: 'left'
+    }
 
 });
-at.obj = {title: 'title', algin: 'left'};
-at.width="2px";
-at.height="3px";
-at.array=[{aa:1,bb:2}];
-// at.array[0]={aa:11};
 
-console.log(at.array[0].aa)
+console.log(at.array.length)
 setTimeout(function () {
-    // at.width="6px";
-    // at.array=[{aa:3,bb:4}];
-    at.array[0].aa="99999";
-    console.log(at.array[0].aa)
-},7000);
+    // at.obj={
+    //     title: 'title11111111111'
+    // };
+    at.obj.title = "title2222222";
+    at.obj.algin = "left111111111111";
+
+    at.array=[{aa:3,bb:4}];
+
+    at.array[0].aa="9999";
+    console.log($("#pka").attr("title"))
+},3000);
+
+/*ms-css*/
 
 
 /*bug*/
 var vm = avalon.define({
     $id: "tests",
     test1: "点击测试按钮没反应 绑定失败"
-})
-console.log(vm.test1)
-vm.one = function () { //不能再追加此方法
-    vm.test1 = "绑定成功"
-    console.log(vm.test1)
-};
+});
+
+
+// vm.one = function () { //不能再追加此方法
+//     vm.test1 = "绑定成功"
+//     console.log(vm.test1)
+// };
 // console.log(vm)
