@@ -74,7 +74,8 @@ module.exports=function (options) {
             extensions: ['', '.js', '.json'],
             alias: {
                 'jquery': path.resolve(__dirname, 'app/_lib/jQuery-1.11.3.js'),
-                'avalon2':path.resolve(node_modules,'avalon2/dist/avalon.js')
+                'avalon2':path.resolve(__dirname,'app/_lib/avalon.js')
+                // 'avalon2':path.resolve(node_modules,'avalon2/dist/avalon.js')
             }
         },
         output: {

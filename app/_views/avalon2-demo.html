@@ -40,5 +40,26 @@
         </div>
     </div>
 
+    <div class="tit">
+        <h2>ms-attr绑定</h2>
+    </div>
+    <div class="fix">
+        <div ms-controller="attr">
+            <span ms-attr="@obj">直接引用对象</span><br/>
+            <span ms-attr="{width: @width, height: @height}">使用对象字面量</span><br/>
+            <input ms-duplex="@width">
+            <span ms-attr="@array">直接引用数组</span><br/>
+            <span ms-attr="[@obj1, @obj2, (@toggle ? @obj3: @obj4)]">使用数组字面量,里面可以用三元运算符</span>
+        </div>
+
+    </div>
+    <div class="tit">
+        <h2>bug</h2>
+    </div>
+    <div class="fix">
+        <div ms-controller="tests">
+            <div ms-on-click="@one()">{{@test1}}</div>
+        </div>
+    </div>
 </body>
 </html>
