@@ -12,6 +12,20 @@
     <div id="index">12356789</div>
     <div><img src="../_images/poto.jpg" width="100" height="100"/></div>
 
+    <h2>倒计时</h2>
+    <div ms-controller="Countdown">
+        <input ms-duplex="@state.end | date('YYYY-MM-dd HH:mm:ss')">
+        <!--<input>-->
+        <ul >
+            <!--<li>{{@time.h}}</li>-->
+            <!--<li>{{@time.m}}</li>-->
+            <!--<li>{{@time.s}}</li>-->
+
+            <li>{{@time[0]}}</li>
+            <li>{{@time[1]}}</li>
+            <li>{{@time[2]}}</li>
+        </ul>
+    </div>
 
 </body>
 </html>

@@ -57,11 +57,11 @@ module.exports=function (options) {
         var pages = Object.keys(entries);
 
     //#如果需要 ie8~9 下调试注释这里 ie8~9 不支持热调试
-    if(DEBUG){
-        pages.forEach(function (e) {
-            entries[e].unshift(webpackClient,webpackHot)
-        });
-    }
+    // if(DEBUG){
+    //     pages.forEach(function (e) {
+    //         entries[e].unshift(webpackClient,webpackHot)
+    //     });
+    // }
     //#end
 
    //config
