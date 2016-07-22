@@ -14,16 +14,20 @@ $("#index").css({color:"red"});
 var tim=avalon.define({
     $id:"Countdown",
     state:{
-        start:"2016-07-20 10:00:00",
-        end:"2016-07-20 16:00:00"
+        start:"2016-07-21 10:00:00",
+        end:(new Date(2016,7,21,16,30,1)).getTime()
+
     },
     // time:{h:0, m:0,s:0},
     time:[0,0,0],
     GetRTime:function (a) {
-        console.log(this)
-        var EndTime= new Date(a);
-        var NowTime = new Date();
-        var t =EndTime.getTime() - NowTime.getTime();
+        // console.log(a);
+        var EndTime= a;
+        var NowTime = (new Date()).getTime();
+        // console.log(EndTime);
+        // console.log(NowTime);
+        var t =EndTime- NowTime;
+        // console.log(t)
         var h=Math.floor(t/1000/60/60%24);
         var m=Math.floor(t/1000/60%60);
         var s=Math.floor(t/1000%60);

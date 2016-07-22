@@ -52,12 +52,23 @@ var at=avalon.define({
     toggle:true,
     dataWidth:"true",
     dataHeight:"3px",
-    array:[],
+    obj1:{
+        obj1o:"obj1o"
+    },
+    obj2:{
+        obj2o:"obj2o"
+    },
+    obj3:{
+        obj3o:"obj3o"
+    },
+    obj4:{
+        obj4o:"obj4o"
+    },
+    array:[{aa:1,bb:2}],
     obj:{
         title: 'title',
         algin: 'left'
     }
-
 });
 
 console.log(at.array.length)
@@ -67,10 +78,9 @@ setTimeout(function () {
     // };
     at.obj.title = "title2222222";
     at.obj.algin = "left111111111111";
-
     at.array=[{aa:3,bb:4}];
 
-    at.array[0].aa="9999";
+    // at.array[0].aa="9999";
     console.log($("#pka").attr("title"))
 },3000);
 
