@@ -38,6 +38,9 @@ function getEntry(globPath, pathDir) {
         }
         entries[pathname] = ['./' + entry];
     }
+    console.log("----------------------------------------");
+    console.log(entries);
+    console.log("----------------------------------------");
     return entries;
 }
 
