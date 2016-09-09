@@ -1,0 +1,25 @@
+body{
+    background: #000;
+    color: #fff;
+}
+a{
+    display:block;
+}
+.a{
+    color: #fff;
+}
+a.active{
+    background: #00a000;
+}
+
+a:hover{
+    color: #6c0000;
+}
+a:active{
+    color: red;
+}
+.div{
+    width: 100px;
+    height: 100px;
+    background: #6c0000;
+}

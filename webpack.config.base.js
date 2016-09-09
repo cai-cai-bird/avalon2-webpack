@@ -38,9 +38,6 @@ function getEntry(globPath, pathDir) {
         }
         entries[pathname] = ['./' + entry];
     }
-    console.log("----------------------------------------");
-    console.log(entries);
-    console.log("----------------------------------------");
     return entries;
 }
 
@@ -153,7 +150,9 @@ module.exports=function (options) {
 
     //html 模板插件
     pages.forEach(function(pathname) {
-
+        console.log("*********************");
+        console.log(pathname)
+        console.log("*********************");
         var conf = {
             filename: './_views/' + pathname + '.html', //生成的html存放路径，相对于path
             template: path.resolve(__dirname, './app/_views/' + pathname + '.html'), //html模板路径

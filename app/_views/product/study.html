@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ms-controller="study">
+
+    <h5 ms-click="@alert()">{{@name | uppercase}}</h5>
+    <p>{{@content}}</p>
+    <div ms-controller="inner">
+        {{@name}}
+        <p ms-click="@alert()">{{@content}}</p>
+    </div>
+    <input type="text" ms-duplex="@watch" />
+
+    <ol>
+        <h5 ms-click="@array.clear()">点我，清空数组</h5>
+        <h5 ms-click="@array.set(4,888)">点我，更新某一索引位置中的元素，因为简单数组元素的数组，是不会转换它的元素。</h5>
+        <h5 ms-click="@array.ensure(88)">只有当数组不存在此元素时，才添加此元素。</h5>
+        <h5 ms-click="@array.removeAt(2)">求传入一数字，会移除对应位置的元素。</h5>
+        <h5 ms-click="@array.removeAll(@compare)">有三种用法，如果是一个函数，则过滤比较后得到真值的元素， 如果是一数组，则将此数组中与原数组相等于的元素全部移除；如果没有任何参数，则全部清空。</h5>
+        <li ms-for="($index,el) in @array">
+            {{el}} - {{$index}}
+            <ul>
+                <li ms-for="(k,v) in el">
+                    {{k}}-{{v}}
+                </li>
+            </ul>
+            <button ms-click="@array.remove(el)">删除</button>
+        </li>
+    </ol>
+
+    <div ms-controller="AAA">
+        <div>{{@name}} : {{@color}}</div>
+        <div ms-controller="BBB">
+            <div>{{@name}} : {{@color}}</div>
+            <div ms-controller="CCC">
+                <div>{{@name}} : {{@color}}</div>
+            </div>
+            <div ms-important="DDD">
+                <div>{{@name}} : {{@color}}</div>
+            </div>
+        </div>
+    </div>
+
+    <img ms-attr="{src:@path,width:@width,height:@height}"/>
+    <a ms-attr="{href:@path}" ms-css="{width:@width,height:@height}" ms-class="@class" >{{@path}}</a>
+    {{@null}}
+    <div ms-html="@html" ></div>
+    <a href="javascript:"  ms-hover="@hover" ms-active="@active">激活</a>
+
+    <div ms-controller="test">
+        <p ms-if="@aaa.bbb"> {{@show(@aaa,'bbb','ccc')}} </p>
+    </div>
+
+
+    <div ms-controller="visible">
+        <h5 ms-click="@visible">点我</h5>
+        <div ms-visible="@toggle">
+            我市被隐藏的东西
+            <h5>遍历数组</h5>
+            <ul>
+                <li ms-for="($index,el) in @array">{{$index}} - {{el}}</li>
+            </ul>
+            <h5>遍历数组 双向数据绑定 数组中必须是对象的形式</h5>
+            <ul>
+                <li ms-for="($index,el) in @arr">
+                    <p ms-for="(k,v) in el">
+                        {{$index}}-{{k}}-{{v}}
+                        <input ms-duplex="el[k]"/>
+                    </p>
+                </li>
+            </ul>
+            <h5>遍历数组 limitBy(5) as items  显示数组的前5个元素, 并且将这5个元素存放在items数组中, 以保存过滤或排序结果 </h5>
+            <ul>
+                <li ms-for="($index,el) in @array | limitBy(@array.length,1) as items ">
+                    {{$index}} - {{el}}
+                </li>
+            </ul>
+            <h5>遍历json</h5>
+            <ul>
+                <li ms-for="(k,v) in @json">
+                    {{k}} - {{v}}
+                </li>
+            </ul>
+            <h5>遍历json 双向数据绑定 对象的形式</h5>
+            <ul>
+                <li ms-for="(k,v) in @json">
+                    {{k}} - {{v}}
+                    <input ms-duplex="@json[k]" />
+                </li>
+            </ul>
+
+            <h5>遍历json filterBy("search")  search=="字符串和方法 字符串直接写  方法调用vm"</h5>
+            <ul>
+                <li ms-for="(k,v) in @json | filterBy(@func) as obj">
+                    {{k}} - {{v}}
+                </li>
+            </ul>
+
+            <h5>遍历json selectby(array[,defaults])  array为属性名集合，将循环中包含array属性名的属性筛选出来。
+
+                defaults(可选值)
+                Type:Object
+                当循环值中无array中的属性名，则可通过defaults为属性设置初始值。默认初始值为''"</h5>
+            <ul>
+                <li ms-for="($index,el) in @arr">
+                    <p ms-for="value in el | selectBy(['name','age','day'],{day:'1991'})">
+                        {{value}}
+                    </p>
+                </li>
+            </ul>
+
+            <h5>遍历json orderBy(criteria[,reverse])
+                criteria
+                Type:String,Function
+                当criteria为字符串时，将根据指定的属性名排序。当criteria为方法时，则按照传入的方法排序。
+
+                reverse(可选值，默认值1)
+                Type:Number
+                reverse为1时，正序排列。反之为-1时，倒序排列。</h5>
+            <ul>
+                <li ms-for="($index,el) in @arr | orderBy('age',-1)">
+                    <p ms-for="value in el">
+                        {{value}}
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+   <!-- <div ms-controller="event" class="div" >
+        <p ms-click="@fn1($event)">{{@str1}}</p>
+        <p ms-click="@fn2($event)">{{@str2}}</p>
+        <p ms-click="@fn3($event)">{{@str3}}</p>
+    </div>-->
+
+    <div ms-controller="event" class="div" >
+        <div ms-click-1="@fn1($event)" ms-click-2="@fn2($event)"  ms-click-3="@fn3($event)">
+            <p >{{@str1}}</p>
+            <p >{{@str2}}</p>
+            <p>{{@str3}}</p>
+        </div>
+    </div>
+
+
+
+    <div ms-controller="event_func">
+        <fieldset ms-controller="test">
+            <legend>有关事件回调传参</legend>
+            <div ms-mouseenter="@callback" ms-mouseleave="@callback">{{@status}}<br/>
+                <input ms-on-input="@check"/>{{@field}}
+            </div>
+            <div ms-click="@argsClick($event, 100, @firstName)">点我</div>
+            <div ms-for="el in @array" >
+                <p ms-click="@loopClick(el, $event)">{{el}}</p>
+            </div>
+            <button ms-click="@submit" type="button">点我</button>
+        </fieldset>
+    </div>
+
+
+    <div ms-controller="form_test">
+        <fieldset>
+            <legend>form_test</legend>
+            <input type="radio" value="11"  ms-duplex="@aaa"/>
+            <input type="radio" value="22"  ms-duplex="@aaa"/>
+            <input type="radio" value="33"  ms-duplex="@aaa"/>
+            <input type="checkbox" value="11"  ms-duplex="@bbb"/>
+            <input type="checkbox" value="22"  ms-duplex="@bbb"/>
+            <input type="checkbox" value="33"  ms-duplex="@bbb"/>
+            <p>radio: {{@aaa}}; checkbox:{{@bbb}}</p>
+            <input type="radio"  ms-duplex-checked="@ccc"/>
+            <input type="checkbox"  ms-duplex-checked="@ddd"/>
+            <h5>select . 在最开始时, 当option元素的value值或innerText(不在value值)与数据相同,它们就会被选上</h5>
+            <select ms-duplex="@eee">
+                <option>aaa</option>
+                <option>bbb</option>
+                <option>vvv</option>
+                <option>eee</option>
+                <option>ccc</option>
+            </select>
+            <select multiple="true" ms-duplex="@fff">
+                <option>aaa</option>
+                <option>bbb</option>
+                <option>vvv</option>
+                <option>eee</option>
+                <option>ccc</option>
+            </select>
+            <h5>数据转换</h5>
+            <input type="text" ms-duplex="@aaa | uppercase"/> {{@aaa}}
+            <input type="text" ms-duplex="@eee" ms-input="@num"/> {{@eee}}
+            <input type="text" ms-duplex="@bbb" ms-change="@date_abc"/> {{@bbb}}
+            <input type="text" ms-duplex-number="@number"/> {{@number | num}}
+        </fieldset>
+    </div>
+    <div ms-controller="form_test">
+        <fieldset>
+            <legend>form vaild</legend>
+            <form ms-validate="@validation">
+                <input type="text" ms-duplex="@aaa" ms-rules="{required:true,maxlength:10,minlength:5}" data-maxlength-message="too long"  data-minlength-message="too short"/>
+                <input type="submit" value="submit"/>
+            </form>
+        </fieldset>
+    </div>
+    <h2>全选 全不选</h2>
+    <div ms-controller="checkbox">
+        <input type="checkbox" ms-duplex-checked="@checked"  data-duplex-changed="@allChecked"/>全选
+        <ul>
+            <li ms-for="($index,el) in @data"><input type="checkbox" data-duplex-changed="@oneChecked" ms-duplex-checked="el.checked"/>{{$index}} - {{el.checked}}</li>
+        </ul>
+    </div>
+    <div ms-controller="fruit">
+        <input type="text" ms-duplex="@selected"/>
+        <br>
+        <select ms-duplex="@selected">
+            <option ms-for="($index,el) in @options">
+                {{el}}
+            </option>
+        </select>
+    </div>
+    <h2>三级联动</h2>
+    <div ms-controller="linkage">
+        <select ms-duplex="@firstSelected">
+            <option ms-for="($index,el) in @first">{{el}}</option>
+        </select>
+        <select  ms-duplex="@secondSelected">
+            <option ms-for="($index,el) in @second">{{el}}</option>
+        </select>
+        <select ms-duplex="@thirdSelected">
+            <option ms-for="($index,el) in @three">{{el}}</option>
+        </select>
+    </div>
+
+    <div ms-controller="validate2">
+        <form class="cmxform" ms-validate="@validate" >
+            <fieldset>
+                <legend>验证完整的表单</legend>
+                <p>
+                    <label for="firstname">名字</label>
+                    <input id="firstname"
+                           name="firstname"
+                           ms-duplex="@firstname"
+                           ms-rules="{required:true, pattern: /[\u4e00-\u9fa5a-z]{2-8}/i }"
+                           data-required-message="必须是中文或字母(3-8个字符)" >
+                </p>
+                <p>
+                    <label for="lastname">姓氏</label>
+                    <input id="lastname"
+                           name="lastname"
+                           ms-duplex="@lastname"
+                           ms-rules="{required:true}"
+                           data-required-message="请输入您的姓氏"
+                    >
+                </p>
+                <p>
+                    <label for="username">用户名</label>
+                    <input id="username"
+                           name="username"
+                           ms-duplex="@username | change"
+                           ms-rules="{required:true, minlength:2}"
+                    >
+                </p>
+                <p>
+                    <label for="password">密码</label>
+                    <input id="password"
+                           name="password"
+                           type="password"
+                           ms-duplex="@password"
+                           ms-rules="{required:true,minlength:5}"
+                           data-required-message="请输入密码"
+                           data-required-message="密码长度不能小于 5 个字母"
+
+                    >
+                </p>
+                <p>
+                    <label for="confirm_password">验证密码</label>
+                    <input id="confirm_password"
+                           name="confirm_password"
+                           type="password"
+                           ms-duplex="@confirm_password | change"
+                           ms-rules="{required:true,equalto:'password'}"
+                           data-equalto-message="两次密码输入不一致"
+                    >
+                </p>
+                <p>
+                    <label for="email">Email</label>
+                    <input id="email"
+                           name="email"
+                           type="email"
+                           ms-duplex="@email"
+                           ms-rules="{email:true}"
+                           data-email-message="请输入一个正确的邮箱"
+                    >
+                </p>
+                <p>
+                    <label for="agree">请同意我们的声明</label>
+                    <input type="checkbox" class="checkbox" id="agree" name="agree"
+                           ms-duplex-checked="@agree"
+                           ms-rules="{checked:true}"
+                    >
+                </p>
+                <p>
+                    <label for="newsletter">我乐意接收新信息</label>
+                    <input type="checkbox" class="checkbox"
+                           id="newsletter"
+                           name="newsletter"
+                           ms-duplex-checked="@toggle"
+                    >
+                </p>
+                <fieldset id="newsletter_topics" ms-visible="@toggle" >
+                    <legend>主题 (至少选择两个) </legend>
+                    <label for="topic_marketflash">
+                        <input type="checkbox"
+                               id="topic_marketflash"
+                               value="marketflash"
+                               name="topic[]"
+                               ms-duplex="@topic"
+                               ms-rules="{selecttwo:true}"
+                        >Marketflash
+                    </label>
+                    <label for="topic_fuzz">
+                        <input type="checkbox"
+                               id="topic_fuzz"
+                               value="fuzz"
+                               name="topic[]"
+                               ms-duplex="@topic"
+                               ms-rules="{selecttwo:true}"
+                        >Latest fuzz
+                    </label>
+                    <label for="topic_digester">
+                        <input type="checkbox"
+                               id="topic_digester"
+                               value="digester"
+                               name="topic[]"
+                               ms-duplex="@topic"
+                               ms-rules="{selecttwo:true}"
+                        >Mailing list digester
+                    </label>
+                    <label for="topic" class="error" style="display:none">至少选择两个</label>
+                </fieldset>
+                <p>
+                    <input class="submit" type="submit" value="提交">
+                </p>
+            </fieldset>
+        </form>
+    </div>
+
+
+</body>
+</html>
